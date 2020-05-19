@@ -1,0 +1,48 @@
+@CHARSET "ISO-8859-1";
+
+button {
+  background-color: #e6ffe9; 
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+body {
+  background-color: #d9dfff;
+}
+h1, h2{
+  font-family: "Lucida Console", Courier, monospace;
+  text-align: center;
+}
+p{
+	font-family: "Lucida Console", Courier, monospace;
+}
+
+.scrollable {
+    height: 500px;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.leftcolumn {
+	text-align: center;
+	width: 25%;	
+}
+.rightcolumn {
+	width: 75%;	
+	text-align: center;	
+}
+
+.spacer{
+	width: 50px;
+}
+
+ .box {
+    display: flex;
+    justify-content: stretch;
+}
+      

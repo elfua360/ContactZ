@@ -1,0 +1,14 @@
+@CHARSET "ISO-8859-1";
+
+<link rel="stylesheet" type="text/css" href="HomePage.css">
+.column {
+  float: left;
+}
+
+.left {
+  width: 25%;
+}
+
+.right {
+  width: 75%;
+}

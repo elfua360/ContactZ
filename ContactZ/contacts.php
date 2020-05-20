@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <!-- ---------------------------HEAD STARTS HERE------------------------------------ -->
@@ -5,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="CSS/ContactZ.css">
 <meta charset="ISO-8859-1">
 <title>ContactZ Online Contact Manager</title>
-<h1>Welcome, User Name Here</h1>
+<?php echo "<h1>" . "Welcome, " . $_SESSION['name'] . "</h1>"?>
 <p align="right">
 <button onclick="window.location='https://example.com';">Add Contact</button>
 <button onclick="window.location='http://contactz.xyz/Logout.html';">Log Out</button>
@@ -18,7 +21,12 @@ function addContact(){
 	
 }
 
+function getName() {
+    
+}
 </script>
+
+
 
 
 <style>

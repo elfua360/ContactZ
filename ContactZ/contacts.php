@@ -11,13 +11,26 @@ session_start();
 <?php echo "<h1>" . "Welcome, " . $_SESSION['name'] . "</h1>"?>
 <p align="right">
 <button onclick="window.location='https://example.com';">Add Contact</button>
-<button onclick="window.location='http://contactz.xyz/Logout.html';">Log Out</button>
+<!--<button onclick="window.location='http://contactz.xyz/Logout.html';">Log Out</button>-->
+    <button onclick="logout();">Log Out</button>
 </p>
 
-
-
-<script>
-function addContact(){
+<script>   
+function logout() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() 
+    {
+        if (this.readyState == 4 && this.status == 200) 
+        {
+            console.log(this.responseText);
+            window.location.replace('index.php');
+        }
+    };
+    xhttp.open("GET", "API/logout.php", true);
+    xhttp.send();
+}
+    
+function addContact() {
 	
 }
 

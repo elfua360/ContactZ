@@ -1,4 +1,6 @@
 {
-    "username" : "test1",
-    "password" : "test1p1"
+    "firstname" : "Lorem",
+    "lastname" : "Ipsum",
+    "username" : "abc",
+    "password" : "123"
 }

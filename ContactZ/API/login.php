@@ -10,8 +10,6 @@ $dbname = 'acdcecon_functionality_test';
 $login = $_REQUEST["login"];
 $login = json_decode($login, true);
 
-
-
 // Make connection
 $conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 

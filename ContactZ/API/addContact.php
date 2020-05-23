@@ -14,11 +14,10 @@
     $add = json_decode(file_get_contents('JSON/infile.json'), true);
 
     // Take contact information and store them in appropriate fields
- //   $UID = $inData["UID"];
     $firstname = $add["firstname"];
     $lastname = $add["lastname"];
     $number = $add["number"];
-    $uid = 1;
+    $uid = 0;
 
    /* if (isset($_SESSION['id']))
         $uid = $_SESSION['id'];

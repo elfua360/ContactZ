@@ -1,7 +1,5 @@
 <?php
 session_start();
-print("script start");
-ob_flush();
 
 // Server parameters
 $dbhost = 'localhost';
@@ -13,8 +11,8 @@ $dbname = 'acdcecon_functionality_test';
 $contact = file_get_contents('JSON/infile.txt');
 
 // $contact = $_REQUEST["contact"];
-
-$contact = strtolower($contact);
+I
+$contact = strtolower($contact); // Find way to properly compare database entries and searches
 
 /*
     Handle session details here
@@ -36,13 +34,11 @@ else
     
     // For testing
     $sql = "SELECT id FROM contacts where (number LIKE '" . $contact . "%' or firstname LIKE '" . $contact ."%' or lastname LIKE '" . $contact . "%')";
-    echo $sql;
     $result = $conn->query($sql);
+    $ids = array();
     
     if ($result->num_rows == 0)
         echo 'No results found\n';
-    
-    $ids = array();
     
     else
     {
@@ -50,11 +46,12 @@ else
         while ($row = $result->fetch_assoc())
             array_push($ids, $row['id']);
                      
-        // send ids
-        echo $ids;
+        // send ids **consider sending back as json
+        foreach($ids as $id)
+            echo $id . "\n";
     }
 }
 
-conn->close();
+$conn->close();
 
 ?>

@@ -15,7 +15,7 @@ I
 $contact = strtolower($contact); // Find way to properly compare database entries and searches
 
 /*
-    Handle session details here
+    Handle session details here, check that ids are appropriate
 */
 
 // Make connection

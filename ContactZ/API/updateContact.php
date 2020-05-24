@@ -46,21 +46,21 @@ else
         {
             if (strlen($firstname) > 0)
             {
-                $sql = ($count - $iter++) == 1 ? $sql . "firstname = ' " . $firstname . "'" : $sql . "firstname = '" . $firstname . "', ";
+                $sql = ($count - $iter++) == 1 ? $sql . "firstname = '" . $firstname . "'" : $sql . "firstname = '" . $firstname . "', ";
                 $firstname = "";
                 continue;
             }
              
             if (strlen($lastname) > 0)
             {
-                $sql = ($count - $iter++) == 1 ? $sql . "lastname = ' " . $lastname . "'" : $sql . "lastname = '" . $lastname . "', ";
+                $sql = ($count - $iter++) == 1 ? $sql . "lastname = '" . $lastname . "'" : $sql . "lastname = '" . $lastname . "', ";
                 $lastname = "";
                 continue;
             }
             
             if (strlen($number) > 0)
             {
-                $sql = ($count - $iter++) == 1 ? $sql . "number = ' " . $number . "'" : $sql . "number = '" . $number . "', ";
+                $sql = ($count - $iter++) == 1 ? $sql . "number = '" . $number . "'" : $sql . "number = '" . $number . "', ";
                 $number = "";
                 continue;
             }    

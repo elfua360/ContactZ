@@ -30,18 +30,31 @@ else
 	<!-- ---------------------------LOGIN FORM STARTS HERE-------------------------------  -->
 	<div class="box">
 		<div class="widecolumn" style="background-color: #fce6ff;">
-			<p>ContactZ is an online contact manager.</p><a href="https://contactz.xyz/register">Register here!</a>
+			<p>ContactZ is an online contact manager. The site is under construction right now. </p>
+			<p>Site Map:</p>
+			<a href="https://contactz.xyz/contacts.html">Homepage after logging in</a>
+			<br><br>
+			<a href="https://contactz.xyz/addcontact.html">Create New Contact</a>
+			<br><br>
+			<a href="https://contactz.xyz/register.html">Create an Account</a>
+			<br><br>
+			<a href="https://contactz.xyz/logout.html">Logout Screen</a>
+			<br><br>
+			
+			<a href="https://contactz.xyz/register.html">Register here!</a>
 		</div>
 		<div class="thincolumn" style="background-color: #fffa99;">
 			<form>
 				<label for="username">Username:</label><br> <input type="text" id="username" name="username">
-				<br> 
-				<label for="lname">Password:</label><br> <input type="text" id="password" name="password">
+				<br>  <br>
+				<label for="password">Password:</label><br> <input type="password" id="password" name="password">
+			
+			<br><br>
+			<button type="button" onclick="login()">Log In</button>
+			<p id ="response" style="color:red"> </p>
+			<!--<p>Form Handler also needed at /register.php and /addcontact.php </p>-->
 			</form>
-			<br>
-			<button onclick="login()">Log In</button>
-            <!-- document.location = 'https://contactz.xyz/contacts.html' -->
-			<!-- <input type="submit" value="Log In"> actual button, change later -->
+			
 
 		</div>
 	</div>
@@ -57,7 +70,9 @@ function login(){
             // print php response here
             if (this.responseText == 1)
                 window.location.replace('contacts.php');
-        }
+            else
+                document.getElementById("response").innerHTML = this.responseText;
+        } 
     };
 	var user = document.getElementById('username').value;
     var pass = document.getElementById('password').value;

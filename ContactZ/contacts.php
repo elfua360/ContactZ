@@ -10,37 +10,9 @@ session_start();
 <title>ContactZ Online Contact Manager</title>
 <?php echo "<h1>" . "Welcome, " . $_SESSION['name'] . "</h1>"?>
 <p align="right">
-<button onclick="window.location='https://example.com';">Add Contact</button>
-<!--<button onclick="window.location='http://contactz.xyz/Logout.html';">Log Out</button>-->
-    <button onclick="logout();">Log Out</button>
+<button onclick="window.location='https://'contactz.xyz/addcontact.html;">Add Contact</button>
+<button onclick="logout();">Log Out</button>
 </p>
-
-<script>   
-function logout() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() 
-    {
-        if (this.readyState == 4 && this.status == 200) 
-        {
-            console.log(this.responseText);
-            window.location.replace('index.php');
-        }
-    };
-    xhttp.open("GET", "API/logout.php", true);
-    xhttp.send();
-}
-    
-function addContact() {
-	
-}
-
-function getName() {
-    
-}
-</script>
-
-
-
 
 <style>
 * {
@@ -77,7 +49,7 @@ function getName() {
 <body>
 
 	<div class="box">
-		<div class="thincolumn" style="background-color: #fffa99;">
+		<div class="sidenav" style="background-color: #fffa99;">
 			<h2>List of Contacts</h2>
 			<div class="scrollable" style="background-color: #fffa99;">
 
@@ -124,7 +96,22 @@ function getName() {
 
 
 	<script>
+function logout() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() 
+    {
+        if (this.readyState == 4 && this.status == 200) 
+        {
+            console.log(this.responseText);
+            window.location.replace('index.php');
+        }
+    };
+    xhttp.open("GET", "API/logout.php", true);
+    xhttp.send();
+}
+   
 function getInfo1() { 
+    
 	document.getElementById("title").innerHTML = "Contact Information";
   	document.getElementById("firstname").innerHTML = "First Name: Andy";
   	document.getElementById("lastname").innerHTML = "Last Name: Baker";
@@ -146,12 +133,15 @@ function getInfo3() {
 	  document.getElementById("email").innerHTML = "Email: john.smith@ucf.edu";
 	}
 function delete1(){
-	  if (confirm("Press a button!")) {
-		  document.getElementById("title").innerHTML = "Deleted";
-		  document.getElementById("firstname").innerHTML = "Deleted";
-		  document.getElementById("lastname").innerHTML = "Deleted";
-		  document.getElementById("phone").innerHTML = "Deleted";
-		  document.getElementById("email").innerHTML = "Deleted";
+	  if (confirm("Are you sure you want to delete this contact?")) {
+		  <!-- needs function to actually remove contact from database.-->
+		  alert("Contact has been deleted.");
+		  document.getElementById("title").innerHTML = "Click on a name to see information";
+		  document.getElementById("firstname").innerHTML = "First Name:";
+		  document.getElementById("lastname").innerHTML = "Last Name:";
+		  document.getElementById("phone").innerHTML = "Phone Number:";
+		  document.getElementById("email").innerHTML = "Email:";
+		  
 	  } else {
 	    alert("Contact has not been deleted.")
 	  }

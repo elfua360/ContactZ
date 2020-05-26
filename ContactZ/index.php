@@ -14,6 +14,7 @@ else
 <!DOCTYPE html>
 <html>
 <head>
+<script src="jquery-3.5.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="CSS/ContactZ.css">
 <meta charset="ISO-8859-1">
 <title>Login</title>
@@ -44,13 +45,13 @@ else
 			<a href="https://contactz.xyz/register.html">Register here!</a>
 		</div>
 		<div class="thincolumn" style="background-color: #fffa99;">
-			<form>
+			<form id = "form">
 				<label for="username">Username:</label><br> <input type="text" id="username" name="username">
 				<br>  <br>
 				<label for="password">Password:</label><br> <input type="password" id="password" name="password">
 			
 			<br><br>
-			<button type="button" onclick="login()">Log In</button>
+			<button type="button">Log In</button>
 			<p id ="response" style="color:red"> </p>
 			<!--<p>Form Handler also needed at /register.php and /addcontact.php </p>-->
 			</form>
@@ -59,7 +60,7 @@ else
 		</div>
 	</div>
 <script>
-function login(){
+/*function login(){
     console.log('login called');
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() 
@@ -82,7 +83,26 @@ function login(){
     console.log(json);
     xhttp.open("POST", "API/login.php?login=" + json, true);
     xhttp.send();
-}
+}*/
+$(document).ready(function() {
+   $("button").click(function() {
+       var payload = {username : $('#username').val(), password : $('#password').val()};
+       payload = JSON.stringify(payload);
+       console.log(payload);
+       $.ajax({
+           url:"API/login.php",
+           data: {login : payload},
+           datatype: "json",
+           method: "POST",
+           success: function(data) {
+               if (data == "1")
+                   window.location.replace('contacts.php');
+               else
+                $("#response").text(data);
+           }
+       }); 
+   });    
+});
 </script>
 
 </body>

@@ -7,12 +7,13 @@ $dbpass = 'group12!@';
 $dbname = 'acdcecon_functionality_test';
 
 // Get login info
-//$username = $_REQUEST["username"];
-//$username = json_decode($username, true);
-//$password = $_REQUEST["password"];
-//$password = json_decode($password, true);
+/*$username = $_POST["username"];
+$username = json_decode($username, true);
+$password = $_POST["password"];
+$password = json_decode($password, true);*/
 
-$login = $_REQUEST["login"];
+$login = $_POST["login"];
+
 $login = json_decode($login, true);
 
 // Make connection
@@ -38,8 +39,8 @@ else
         $_SESSION['name'] = $row['firstname'];
         $_SESSION['id'] = $row['id'];
       //  echo 'Welcome ' . $_SESSION['name'];
-      //  header('Location: ../contacts.php');;
-        echo 1;
+      //  header('Location: ../contacts.php');
+        echo "1";
     }
     
     else

@@ -4,7 +4,7 @@
     $dbhost = 'localhost';
     $dbuser = 'acdcecon_admin';
     $dbpass = 'group12!@';
-    $dbname = 'acdcecon_functionality_test';
+    $dbname = 'acdcecon_contactZ';
 
     // Extract users information and get it as an array
 //   $add = $_REQUEST["add"];

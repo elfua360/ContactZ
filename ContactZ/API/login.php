@@ -4,7 +4,7 @@ session_start();
 $dbhost = 'localhost';
 $dbuser = 'acdcecon_admin';
 $dbpass = 'group12!@';
-$dbname = 'acdcecon_functionality_test';
+$dbname = 'acdcecon_contactZ';
 
 // Get login info
 /*$username = $_POST["username"];

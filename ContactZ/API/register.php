@@ -5,14 +5,14 @@ session_start();
 $dbhost = 'localhost';
 $dbuser = 'acdcecon_admin';
 $dbpass = 'group12!@';
-$dbname = 'acdcecon_functionality_test';
+$dbname = 'acdcecon_contactZ';
 
 // Get login info
-//$register = $_REQUEST["register"];
-//$register = json_decode($register, true);
+$register = $_POST["register"];
+$register = json_decode($register, true);
 
 // For testing
-$register = json_decode(file_get_contents('JSON/infile.json'), true);
+//$register = json_decode(file_get_contents('JSON/infile.json'), true);
 
 // Make connection
 $conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
@@ -21,7 +21,6 @@ $conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 if ($conn -> connect_error)
 {
     die("Connection Error: " . $conn -> connect_error);
-    ob_flush();
 }
 
 // Continue with registration
@@ -33,7 +32,7 @@ else
     // The username is already taken
     if ($result->num_rows > 0)
     {
-        echo 'Username already exists.\n';
+        echo 'Username already exists';
         ob_flush();
     }
     
@@ -49,26 +48,23 @@ else
         if (checkName($username) && checkname($password) && checkname($firstname) && checkname($lastname))
         {
             $sql = "INSERT into users (firstname, lastname, username, password) VALUES('" . $firstname . "', '" . $lastname . "', '" . $username . "', '" . $password . "')";
-            echo $sql . "\n";
             $result = $conn->query($sql);
             
             // Check if query was succesful
             if ($result)
             {
-                echo 'User succesfully registered.\n';
-                ob_flush();
+                echo '1';
             }
                 
             else
             {
-                echo 'Error: ' . $sql . $conn->error . "\n";
-                ob_flush();
+                echo 'Error: ' . $sql . $conn->error;
             }
         }
         
         else
         {
-            echo 'Invalid parameters\n';
+            echo 'Invalid parameters';
             ob_flush();
         }
     }

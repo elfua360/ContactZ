@@ -5,7 +5,7 @@ session_start();
 $dbhost = 'localhost';
 $dbuser = 'acdcecon_admin';
 $dbpass = 'group12!@';
-$dbname = 'acdcecon_functionality_test';
+$dbname = 'acdcecon_contactZ';
 
 // For testing
 $contact_id = json_decode(file_get_contents('JSON/infile.json'));

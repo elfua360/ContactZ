@@ -37,7 +37,7 @@ else
 			<br><br>
 			<a href="https://contactz.xyz/addcontact.html">Create New Contact</a>
 			<br><br>
-			<a href="https://contactz.xyz/register.html">Create an Account</a>
+			<a href="https://contactz.xyz/signup.php">Create an Account</a>
 			<br><br>
 			<a href="https://contactz.xyz/logout.html">Logout Screen</a>
 			<br><br>

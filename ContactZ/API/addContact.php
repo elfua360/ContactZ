@@ -7,11 +7,8 @@
     $dbname = 'acdcecon_contactZ';
 
     // Extract users information and get it as an array
-//   $add = $_REQUEST["add"];
-//   $add = json_decode($add, true);
-
-    // For testing
-    $add = json_decode(file_get_contents('JSON/infile.json'), true);
+    $add = $_POST["add"];
+    $add = json_decode($add, true);
 
     // Take contact information and store them in appropriate fields
     $firstname = $add["firstname"];
@@ -19,15 +16,17 @@
     $number = $add["number"];
     $uid = 0;
 
-   /* if (isset($_SESSION['id']))
+    if (strlen($firstname) <= 0 || strlen($lastname) <= 0 || strlen($number) <= 0)
+        die("Invalid parameters");
+
+    if (isset($_SESSION['id']))
         $uid = $_SESSION['id'];
         
-    else
-    {
+    else 
         die('Error creating contact');
-    } */
+    
 
-    // Establish a secure connection to the database
+    // Conect to database
     $conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 
     // Verify connection to the database has been made
@@ -42,7 +41,7 @@
         $result = $conn->query($sql);
         
         if ($result->num_rows > 0)
-            echo 'contact already exists.\n';
+            echo 'contact already exists';
         
         
         else
@@ -56,7 +55,7 @@
                 echo 'Error creating contact.';
                
             else
-                echo 'Contact added';
+                echo '1';
         
         }
         

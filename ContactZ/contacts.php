@@ -1,20 +1,21 @@
 <?php
 session_start();
+
 if(!isset($_SESSION['loggedin']) || !$_SESSION['loggedin'])
 {
     header('Location: index.php');
 }
+
 ?>
 <!DOCTYPE html>
 <html>
-<!-- ---------------------------HEAD STARTS HERE------------------------------------ -->
 <head>
 <link rel="stylesheet" type="text/css" href="CSS/ContactZ.css">
 <meta charset="ISO-8859-1">
 <title>ContactZ Online Contact Manager</title>
 <?php echo "<h1>" . "Welcome, " . $_SESSION['name'] . "</h1>"?>
 <p align="right">
-<button onclick="window.location='https://'contactz.xyz/addcontact.html;">Add Contact</button>
+<button onclick="addContact();">Add Contact</button>
 <button onclick="logout();">Log Out</button>
 </p>
 
@@ -99,7 +100,7 @@ if(!isset($_SESSION['loggedin']) || !$_SESSION['loggedin'])
 	</div>
 
 
-	<script>
+<script>
 function logout() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() 
@@ -112,6 +113,10 @@ function logout() {
     };
     xhttp.open("GET", "API/logout.php", true);
     xhttp.send();
+}
+
+function addContact() {
+    window.location.replace('addcontact.php');
 }
    
 function getInfo1() { 

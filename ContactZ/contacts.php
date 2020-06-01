@@ -12,6 +12,60 @@ if(!isset($_SESSION['loggedin']) || !$_SESSION['loggedin'])
 <head>
 <link rel="stylesheet" type="text/css" href="CSS/ContactZ.css">
 <meta charset="ISO-8859-1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row {
+    display: flex;
+}
+
+.left {
+    flex: 35%;
+    padding: 15px 0;
+}
+
+.left h2 {
+  padding-left: 8px;
+}
+
+/* Right column (page content) */
+.right {
+  flex: 65%;
+  padding: 15px;
+}
+    
+/* Style the search box */
+#search {
+  width: 100%;
+  font-size: 18px;
+  padding: 11px;
+  border: 1px solid #ddd;
+}
+
+/* Style the navigation menu inside the left column */
+#menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#menu li a {
+  padding: 12px;
+  text-decoration: none;
+  color: black;
+  display: block
+}
+
+#menu li a:hover {
+  background-color: #eee;
+}    
+</style>
 <title>ContactZ Online Contact Manager</title>
 <?php echo "<h1>" . "Welcome, " . $_SESSION['name'] . "</h1>"?>
 <p align="right">
@@ -19,33 +73,7 @@ if(!isset($_SESSION['loggedin']) || !$_SESSION['loggedin'])
 <button onclick="logout();">Log Out</button>
 </p>
 
-<style>
-* {
-  box-sizing: border-box;
-}
 
-.column {
-  float: left;
-  padding: 10px;
-  height: 300px;
-}
-
-.left {
-  width: 25%;
-}
-
-.right {
-  width: 75%;
-  ;
-}
-
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-</style>
 </head>
 <!-- ----------------------------HEAD ENDS HERE--------------------------------------- -->
 
@@ -53,49 +81,18 @@ if(!isset($_SESSION['loggedin']) || !$_SESSION['loggedin'])
 <!-- ---------------------------BODY STARTS HERE-------------------------------------- -->
 <body>
 
-	<div class="box">
-		<div class="sidenav" style="background-color: #fffa99;">
+	<div class="row">
+		<div class="left" style="background-color: #fffa99;">
 			<h2>List of Contacts</h2>
-			<div class="scrollable" style="background-color: #fffa99;">
-
-				<button type="button" onclick="getInfo1()">Andy Baker</button>
-				<p></p>
-				<button type="button" onclick="getInfo2()">Jane Doe</button>
-				<p></p>
-				<button type="button" onclick="getInfo3()">John Smith</button>
-				<p></p>
-				<button type="button" onclick="getInfo1()">Andy Baker</button>
-				<p></p>
-				<button type="button" onclick="getInfo2()">Jane Doe</button>
-				<p></p>
-				<button type="button" onclick="getInfo3()">John Smith</button>
-				<p></p>
-				<button type="button" onclick="getInfo1()">Andy Baker</button>
-				<p></p>
-				<button type="button" onclick="getInfo2()">Jane Doe</button>
-				<p></p>
-				<button type="button" onclick="getInfo3()">John Smith</button>
-				<p></p>
-				<button type="button" onclick="getInfo1()">Andy Baker</button>
-				<p></p>
-				<button type="button" onclick="getInfo2()">Jane Doe</button>
-				<p></p>
-				<button type="button" onclick="getInfo3()">John Smith</button>
-				<p></p>
-			</div>
+			<input type='text' id='search' onkeyup='liveSearch()' placeholder='Search for a contact...' title='Conact search'>
+            <ul id = "menu">
+                <li><a href="#">TEMP</a></li>
+            </ul>
 		</div>
-		<div class="widecolumn" style="background-color: #fce6ff;">
+        
+		<div class="right" style="background-color: #fce6ff;">
 			<h2 id="title">Click on a name to see information</h2>
-			<p></p>
-			<p id="firstname">First Name:</p>
-			<p></p>
-			<p id="lastname">Last Name:</p>
-			<p></p>
-			<p id="phone">Phone Number:</p>
-			<p></p>
-			<p id="email">Email:</p>
-			<p></p>
-			<button type="button" onclick="delete1()">Delete Contact</button>
+            <p> TEMP</p>
 		</div>
 	</div>
 
@@ -116,10 +113,10 @@ function logout() {
 }
 
 function addContact() {
-    window.location.replace('addcontact.php');
+    window.location = 'addcontact.php';
 }
    
-function getInfo1() { 
+/*function getInfo1() { 
     
 	document.getElementById("title").innerHTML = "Contact Information";
   	document.getElementById("firstname").innerHTML = "First Name: Andy";
@@ -154,7 +151,7 @@ function delete1(){
 	  } else {
 	    alert("Contact has not been deleted.")
 	  }
-}
+}*/
 </script>
 
 </body>

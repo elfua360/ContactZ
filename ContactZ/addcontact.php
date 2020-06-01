@@ -52,7 +52,7 @@ $(document).ready(function() {
             method: "POST",
             success: function(data) {
                 if (data == "1")
-                    window.location = 'contacts.php';
+                    window.location.replace('contacts.php');
                 else
                     $("#response").text(data);
             }

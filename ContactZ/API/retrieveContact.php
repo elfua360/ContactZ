@@ -8,7 +8,11 @@ $dbpass = 'group12!@';
 $dbname = 'acdcecon_contactZ';
 
 // For testing
-$contact_id = json_decode(file_get_contents('JSON/infile.json'));
+//$contact_id = json_decode(file_get_contents('JSON/infile.json'));
+
+$contact = $_GET["contact"];
+$contact = json_decode($contact, true);
+$contact_id = $contact["id"];
 
 // Make connection
 $conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
@@ -26,7 +30,7 @@ else
     $result = $conn->query($sql);
     
     if ($result->num_rows > 1 || $result->num_rows <= 0)
-        echo 'Error getting contact'
+        echo -1;
         
     $contact = $result->fetch_assoc();
     

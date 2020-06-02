@@ -17,7 +17,7 @@ if(!isset($_SESSION['loggedin']) || !$_SESSION['loggedin'])
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
-
+    
 * {
   box-sizing: border-box;
 }
@@ -39,6 +39,9 @@ body {
 .right {
   flex: 65%;
   padding: 15px;
+  text-align:center;
+  font-family: verdana;
+  font-size:20px;
 }
     
 /* Style the search box */
@@ -92,7 +95,6 @@ body {
         
 		<div class="right" style="background-color: #fce6ff;">
 			<h2 id="title">Click on a name to see information</h2>
-            <p> TEMP</p>
 		</div>
 	</div>
 
@@ -128,6 +130,18 @@ $(document).ready(function() {
                         $("ul").append(out);   
                 }
             }    
+        });
+    });
+    $("#menu").on('click','li',function(event) {
+        $(".right").empty();
+        $.get("API/retrieveContact.php", {contact : JSON.stringify({"id" : event.target.id})},
+             function(data, status) {
+                console.log(data);
+                var contacts = JSON.parse(data);
+                $(".right").append("<h2>" + contacts['firstname'] + " " + contacts['lastname'] + "</h2>");
+                $(".right").append("<p>Phone Number: " + contacts['number']);
+                $(".right").append("<p>Email: TEMP</p>" );
+            
         });
     });
 });

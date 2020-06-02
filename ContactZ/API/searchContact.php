@@ -31,12 +31,12 @@ else
  //   $sql = "SELECT id FROM contacts where (userid='" . $_SESSION["id"] . ") and (number='" . $contact . "' or firstname='" . $contact ."' or lastname='" . $contact . "')";
     
 
-    $sql = "SELECT * FROM contacts where (userid='" . $_SESSION["id"] . ") and (number LIKE '" . $contact . "%' or firstname LIKE '" . $contact ."%' or lastname LIKE '" . $contact . "%')";
+    $sql = "SELECT * FROM contacts where (userid=" . $_SESSION["id"] . ") and (number LIKE '" . $contact . "%' or firstname LIKE '" . $contact ."%' or lastname LIKE '" . $contact . "%')";
     $result = $conn->query($sql);
     $contacts = array();
     
     if ($result->num_rows == 0)
-        echo "No results found\n";
+        echo -1;
     
     else
     {

@@ -10,6 +10,7 @@ if(!isset($_SESSION['loggedin']) || !$_SESSION['loggedin'])
 <!DOCTYPE html>
 <html>
 <head>
+<script src="jquery-3.5.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="CSS/ContactZ.css">
 <meta charset="ISO-8859-1">
 <style>
@@ -55,14 +56,14 @@ body {
   margin: 0;
 }
 
-#menu li a {
+#menu li {
   padding: 12px;
   text-decoration: none;
   color: black;
   display: block
 }
 
-#menu li a:hover {
+#menu li:hover {
   background-color: #eee;
 }    
 </style>
@@ -84,9 +85,8 @@ body {
 	<div class="row">
 		<div class="left" style="background-color: #fffa99;">
 			<h2>List of Contacts</h2>
-			<input type='text' id='search' onkeyup='liveSearch()' placeholder='Search for a contact...' title='Conact search'>
+			<input type='text' id='search' placeholder='Search for a contact...' title='Contact search'>
             <ul id = "menu">
-                <li><a href="#">TEMP</a></li>
             </ul>
 		</div>
         
@@ -98,6 +98,39 @@ body {
 
 
 <script>
+$(document).ready(function() {
+    $.get("API/searchContact.php", {contact : JSON.stringify({"contact" : ""})},
+         function(data, status) {
+            $("#menu").empty();
+            console.log(data);
+            console.log("test");
+            // check for no results
+            var contacts = JSON.parse(data);
+            length = contacts.length;
+            for (var i =0 ; i < length; i++) {
+                var out = "<li id='" + contacts[i]['id'] + "'>" + contacts[i]['firstname'] + " " + contacts[i]['lastname'] + "</li>";
+                $("ul").append(out);   
+            }
+    });
+    $("#search").on('input',function() {
+        $("#menu").empty();
+        $.get("API/searchContact.php", {contact : JSON.stringify({"contact" : $("#search").val()})},
+         function(data, status) {
+            console.log(data);
+            if(data == "-1");
+ //               $("ul").append("<p style='color:red'>No Results Found</p>");
+            else {
+                var contacts = JSON.parse(data);
+                length = contacts.length;
+                for (var i =0 ; i < length; i++) {
+                    var out = "<li id='" + contacts[i]['id'] + "'>" + contacts[i]['firstname'] + " " + contacts[i]['lastname'] + "</li>";
+                    if($("#" + contacts[i]['id']).length <= 0)
+                        $("ul").append(out);   
+                }
+            }    
+        });
+    });
+});
 function logout() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() 

@@ -15,6 +15,7 @@ $id = $contact["id"];
 $firstname = $contact["firstname"];
 $lastname = $contact["lastname"];
 $number = $contact["number"];
+$email = $contact["email"];
 
 // Get session is here
 
@@ -30,7 +31,7 @@ if ($conn->connect_error)
 
 else
 {
-    $count = count_fields($firstname, $lastname, $number);
+    $count = count_fields($firstname, $lastname, $number, $email);
     
     if ($count <= 0)
         echo "No changes requested";
@@ -64,6 +65,13 @@ else
                 $number = "";
                 continue;
             }    
+            
+            if (strlen($email) > 0)
+            {
+                $sql = ($count - $iter++) == 1 ? $sql . "email = '" . $email . "'" : $sql . "email = '" . $email . "', ";
+                $email = "";
+                continue;
+            } 
         }
         
         $sql = $sql . 'WHERE id = ' . $id; 
@@ -76,14 +84,20 @@ else
         
         else
         {
+            $fullname = $contact["firstname"] . " " . $contact["lastname"];
+            $sql = "UPDATE contacts SET fullname= '" . $fullname . "' where id=" . $id;
+            $result = $conn->query($sql);
+                
             echo 1;
+            
         }
         
     }
+    $conn -> close();
   
 }
 
-function count_fields($fname, $lname, $num)
+function count_fields($fname, $lname, $num, $email)
 {
     $count = 0;
     
@@ -93,7 +107,8 @@ function count_fields($fname, $lname, $num)
         $count++;
     if(strlen($num) > 0)
         $count++;
-    
+    if(strlen($email) > 0)
+        $count++;
     return $count;
     
 }

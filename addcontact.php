@@ -42,7 +42,7 @@ else
 <script>
 $(document).ready(function() {
    $("button").click(function() {
-        var payload = {firstname : $('#firstname').val(), lastname : $('#lastname').val(), number : $('#phone').val()};
+        var payload = {firstname : $('#firstname').val(), lastname : $('#lastname').val(), number : $('#phone').val(), email : $('#email').val()};
         payload = JSON.stringify(payload);  
         console.log(payload);
         $.ajax({

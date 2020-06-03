@@ -41,13 +41,14 @@ else
         // get new user details
         $username = $register["username"];
         $password = $register["password"];
+        $hash = password_hash($password, PASSWORD_BCRYPT);
         $firstname = $register["firstname"];
         $lastname = $register["lastname"];
         
         // Make sure names are right length
         if (checkName($username) && checkname($password) && checkname($firstname) && checkname($lastname))
         {
-            $sql = "INSERT into users (firstname, lastname, username, password) VALUES('" . $firstname . "', '" . $lastname . "', '" . $username . "', '" . $password . "')";
+            $sql = "INSERT into users (firstname, lastname, username, password) VALUES('" . $firstname . "', '" . $lastname . "', '" . $username . "', '" . $hash . "')";
             $result = $conn->query($sql);
             
             // Check if query was succesful

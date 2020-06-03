@@ -31,7 +31,7 @@ else
  //   $sql = "SELECT id FROM contacts where (userid='" . $_SESSION["id"] . ") and (number='" . $contact . "' or firstname='" . $contact ."' or lastname='" . $contact . "')";
     
 
-    $sql = "SELECT * FROM contacts where (userid=" . $_SESSION["id"] . ") and (number LIKE '" . $contact . "%' or firstname LIKE '" . $contact ."%' or lastname LIKE '" . $contact . "%')";
+    $sql = "SELECT * FROM contacts where (userid=" . $_SESSION["id"] . ") and (number LIKE '" . $contact . "%' or firstname LIKE '" . $contact ."%' or lastname LIKE '" . $contact . "%' or fullname LIKE '" . $contact . "%' or email LIKE '" . $contact . "%')";
     $result = $conn->query($sql);
     $contacts = array();
     

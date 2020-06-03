@@ -46,9 +46,9 @@ body {
 
 #edit {
     list-style-type: none;
-    margin-top: 0;
-    margin-right: 0;
-    margin-left: 0;
+    margin-top: 1px;
+    margin-right: 1px;
+    margin-left: 1px;
     padding: 0;
     overflow: hidden;
     background-color: #e6ffe9;   
@@ -130,14 +130,14 @@ body {
 <body>
 
 	<div class="row">
-		<div class="left" style="background-color: #fffa99;">
+		<div class="left" style="background-color: #9aa2ab;">
 			<h2>List of Contacts</h2>
 			<input type='text' id='search' placeholder='Search for a contact...' title='Contact search'>
             <ul id = "menu">
             </ul>
 		</div>
         
-		<div class="right" style="background-color: #fce6ff;">
+		<div class="right" style="background-color: #d5d5d5;">
             <!--<ul id ="edit"> 
             </ul>  -->
 			<h2 id="title">Click on a name to see information</h2>
@@ -188,8 +188,8 @@ $(document).ready(function() {
                 $("#edit").append("<li id='e" + event.target.id + "'>Edit Contact</li>");
                 $("#edit").append("<li id='d" + event.target.id + "'>Delete Contact</li>");
                 $(".right").append("<h2>" + contacts['firstname'] + " " + contacts['lastname'] + "</h2>");
-                $(".right").append("<p>Phone Number: " + contacts['number']);
-                $(".right").append("<p>Email: TEMP</p>" );
+                $(".right").append("<p>Phone Number: " + contacts['number'] + "</p>");
+                $(".right").append("<p>Email: " + contacts['email'] + "</p>" );
             
         });
     });
@@ -214,22 +214,22 @@ $(document).ready(function() {
            $.get("API/retrieveContact.php", {contact : JSON.stringify({"id" : contact})},
                  function(data, status) {
                     var info = JSON.parse(data);
-                    editContact(contact, info["firstname"], info["lastname"], info["number"]);
-                });
+                    editContact(contact, info["firstname"], info["lastname"], info["number"], info["email"]);
+            });
         }
     });
 });
 
 $(document).on('click', '#done', function(event) {
     var id = event.target.id.substring(1);
-    var payload = {contact : JSON.stringify({"id" : parseInt(id), "firstname" : $("#fname").val(), "lastname" : $("#lname").val(), "number" : $("num").val()})};
+    var payload = {contact : JSON.stringify({"id" : parseInt(id), "firstname" : $("#fname").val(), "lastname" : $("#lname").val(), "number" : $("#num").val(), "email" : $("#email").val()})};
     $.post("API/updateContact.php", payload, function(result) {
         console.log(result);
         location.reload();
     
     });
 });
-function editContact(id,fname,lname,num) {
+function editContact(id,fname,lname,num, email) {
     $(".right").empty();
     $(".right").prepend("<ul id= 'done'></ul>");
     $("#done").append("<li id='u" + id + "'>Done</li>");
@@ -240,6 +240,8 @@ function editContact(id,fname,lname,num) {
     $("#f").append("<input type='text' id='lname' name='lname' value='" + lname + "'><br><br>")
     $("#f").append(" <label for='num'>Phone Number:</label>");
     $("#f").append("<input type='text' id='num' name='num' value='" + num + "'><br><br>")
+    $("#f").append(" <label for='email'>Email:</label>");
+    $("#f").append("<input type='text' id='email' name='email' value='" + email + "'><br><br>")
 }
 function logout() {
     var xhttp = new XMLHttpRequest();
@@ -258,43 +260,6 @@ function logout() {
 function addContact() {
     window.location = 'addcontact.php';
 }
-   
-/*function getInfo1() { 
-    
-	document.getElementById("title").innerHTML = "Contact Information";
-  	document.getElementById("firstname").innerHTML = "First Name: Andy";
-  	document.getElementById("lastname").innerHTML = "Last Name: Baker";
-  	document.getElementById("phone").innerHTML = "Phone Number: 407-123-4567";
-  	document.getElementById("email").innerHTML = "Email: andy.baker@ucf.edu";
-}
-function getInfo2() { 
-	document.getElementById("title").innerHTML = "Contact Information";
-	  document.getElementById("firstname").innerHTML = "First Name: Jane";
-	  document.getElementById("lastname").innerHTML = "Last Name: Doe";
-	  document.getElementById("phone").innerHTML = "Phone Number: 407-987-6543";
-	  document.getElementById("email").innerHTML = "Email: jane.doe@ucf.edu";
-	}
-function getInfo3() { 
-	document.getElementById("title").innerHTML = "Contact Information";
-	  document.getElementById("firstname").innerHTML = "First Name: John";
-	  document.getElementById("lastname").innerHTML = "Last Name: Smith";
-	  document.getElementById("phone").innerHTML = "Phone Number: 407-555-5555";
-	  document.getElementById("email").innerHTML = "Email: john.smith@ucf.edu";
-	}
-function delete1(){
-	  if (confirm("Are you sure you want to delete this contact?")) {
-		  <!-- needs function to actually remove contact from database.-->
-		  alert("Contact has been deleted.");
-		  document.getElementById("title").innerHTML = "Click on a name to see information";
-		  document.getElementById("firstname").innerHTML = "First Name:";
-		  document.getElementById("lastname").innerHTML = "Last Name:";
-		  document.getElementById("phone").innerHTML = "Phone Number:";
-		  document.getElementById("email").innerHTML = "Email:";
-		  
-	  } else {
-	    alert("Contact has not been deleted.")
-	  }
-}*/
 </script>
 
 </body>

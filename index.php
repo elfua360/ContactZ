@@ -30,21 +30,14 @@ else
 
 	<!-- ---------------------------LOGIN FORM STARTS HERE-------------------------------  -->
 	<div class="box">
-		<div class="widecolumn" style="background-color: #fce6ff;">
-			<p>ContactZ is an online contact manager. The site is under construction right now. </p>
-			<p>Site Map:</p>
-			<a href="https://contactz.xyz/contacts.html">Homepage after logging in</a>
-			<br><br>
-			<a href="https://contactz.xyz/addcontact.html">Create New Contact</a>
-			<br><br>
-			<a href="https://contactz.xyz/signup.php">Create an Account</a>
-			<br><br>
-			<a href="https://contactz.xyz/logout.html">Logout Screen</a>
-			<br><br>
+		<div class="widecolumn" style="background-color: #d5d5d5;">
+			<p>ContactZ is an online contact manager. Keep track of all of your contacts in one convenient website!</p>
+			<p>Features: Add/Delete contacts, update information, and search!</p>
+			<br>
+			<p>ContactZ is free and always will be! </p>
 			
-			<a href="https://contactz.xyz/register.html">Register here!</a>
 		</div>
-		<div class="thincolumn" style="background-color: #fffa99;">
+		<div class="thincolumn" style="background-color: #9aa2ab;">
 			<form id = "form">
 				<label for="username">Username:</label><br> <input type="text" id="username" name="username">
 				<br>  <br>
@@ -55,6 +48,7 @@ else
 			<p id ="response" style="color:red"> </p>
 			<!--<p>Form Handler also needed at /register.php and /addcontact.php </p>-->
 			</form>
+			<button onclick="window.location='https://'contactz.xyz/signup.php;"> Create An Account</button>
 			
 
 		</div>

@@ -14,9 +14,10 @@
     $firstname = $add["firstname"];
     $lastname = $add["lastname"];
     $number = $add["number"];
+    $email = $add["email"];
     $uid = 0;
 
-    if (strlen($firstname) <= 0 || strlen($lastname) <= 0 || strlen($number) <= 0)
+    if (strlen($firstname) <= 0 || strlen($lastname) <= 0 || strlen($number) <= 0 || strlen($email) <= 0)
         die("Invalid parameters");
 
     if (isset($_SESSION['id']))
@@ -37,7 +38,7 @@
 
     else
     {
-        $sql = "SELECT * FROM contacts where firstname='" . $firstname . "' and lastname='" . $lastname . "' and number='" . $number . "' and userid=" . $uid;
+        $sql = "SELECT * FROM contacts where firstname='" . $firstname . "' and lastname='" . $lastname . "' and number='" . $number . "' and userid=" . $uid . " and email = '" . $email . ",";
         $result = $conn->query($sql);
         
         if ($result->num_rows > 0)
@@ -47,7 +48,7 @@
         else
         {
              // Create an sql statement that will insert the contact, linking it to the user with the users ID
-            $sql = "INSERT INTO contacts (userid, lastname, firstname, number) VALUES (". $uid . ", '" . $lastname . "', '" . $firstname . "', '" . $number . "')";
+            $sql = "INSERT INTO contacts (userid, lastname, firstname, number, email, fullname) VALUES (". $uid . ", '" . $lastname . "', '" . $firstname . "', '" . $number . "', '" . $email . "', '" . $firstname . " " . $lastname . "')";
             
             $result = $conn->query($sql);
             

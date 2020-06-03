@@ -11,7 +11,7 @@
 
 <div class="formholder">
 <form id="form">
-		<label for="firstname">First Name:</label><br> 
+		<label for="firstname">First Name</label><br> 
 		<input type="text"id="firstname" name="fname"> <br> 
 		<br> 
 		<label for="lastname">Last Name</label><br> 
@@ -20,10 +20,10 @@
         <label for="username">Username</label><br> 
 		<input type="text" id="username" name="uname"> <br> 
 		<br> 
-		<label for="password">Password:</label><br> 
+		<label for="password">Password</label><br> 
 		<input type="password" id="password" name="password"> <br>
 		<br> 
-		<label for="password">Confirm Password:</label><br> 
+		<label for="password">Confirm Password</label><br> 
 		<input type="password" id="cpassword" name="cpassword"> <br>
 		<br> 
 		<button type="button">Sign Up!</button>

@@ -26,26 +26,40 @@ if ($conn -> connect_error)
 
 else
 {
-    $sql = "SELECT id,firstname,lastname FROM users where username='" . $login["username"] . "' and password='" . $login["password"] . "'";
+    /*$sql = "SELECT id,firstname,lastname FROM users where username='" . $login["username"] . "' and password='" . $login["password"] . "'";
     $result = $conn->query($sql);
     
     if ($result->num_rows > 0)
     {
         $row = $result->fetch_assoc();
-        /*$firstName = $row["firstname"];
-        $lastName = $row["lastname"];
-        $id = $row["id"]; */
         $_SESSION['loggedin'] = TRUE;
         $_SESSION['name'] = $row['firstname'];
         $_SESSION['id'] = $row['id'];
       //  echo 'Welcome ' . $_SESSION['name'];
       //  header('Location: ../contacts.php');
         echo "1";
-    }
+    } */
+    
+    $sql = "SELECT * FROM users where username='" . $login["username"] . "'";
+    $result = $conn->query($sql);
+    if ($result->num_rows <= 0 || $result->num_rows > 1)
+        echo 'Incorrect Login';
     
     else
     {
-        echo 'Incorrect Login';
+        $row = $result->fetch_assoc();
+        if (password_verify($login["password"], $row["password"]))
+        {
+            $_SESSION['loggedin'] = TRUE;
+            $_SESSION['name'] = $row['firstname'];
+            $_SESSION['id'] = $row['id'];
+            echo "1";
+        }
+        
+        else
+        {
+            echo "Incorrect login";
+        }
     }
 }
 

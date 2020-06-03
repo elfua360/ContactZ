@@ -64,6 +64,27 @@ body {
     color: black;
     padding: 14px 16px;
 }
+    
+#done {
+    list-style-type: none;
+    margin-top: 0;
+    margin-right: 0;
+    margin-left: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #e6ffe9;   
+}
+    
+#done li:hover {
+   background-color: #eee;      
+}
+    
+#done li {
+    float: right;
+    display: block;
+    color: black;
+    padding: 14px 16px;
+}
 
     
     
@@ -152,7 +173,7 @@ $(document).ready(function() {
                 for (var i =0 ; i < length; i++) {
                     var out = "<li id='" + contacts[i]['id'] + "'>" + contacts[i]['firstname'] + " " + contacts[i]['lastname'] + "</li>";
                     if($("#" + contacts[i]['id']).length <= 0)
-                        $("ul").append(out);   
+                        $("#menu").append(out);   
                 }
             }    
         });
@@ -187,8 +208,39 @@ $(document).ready(function() {
                     console.log(data);
             });
         }
+        
+        else if (type == "e")
+        {
+           $.get("API/retrieveContact.php", {contact : JSON.stringify({"id" : contact})},
+                 function(data, status) {
+                    var info = JSON.parse(data);
+                    editContact(contact, info["firstname"], info["lastname"], info["number"]);
+                });
+        }
     });
 });
+
+$(document).on('click', '#done', function(event) {
+    var id = event.target.id.substring(1);
+    var payload = {contact : JSON.stringify({"id" : parseInt(id), "firstname" : $("#fname").val(), "lastname" : $("#lname").val(), "number" : $("num").val()})};
+    $.post("API/updateContact.php", payload, function(result) {
+        console.log(result);
+        location.reload();
+    
+    });
+});
+function editContact(id,fname,lname,num) {
+    $(".right").empty();
+    $(".right").prepend("<ul id= 'done'></ul>");
+    $("#done").append("<li id='u" + id + "'>Done</li>");
+    $(".right").append("<form id='f'></form>");
+    $("#f").append("<label for='fname'>First name:</label>");
+    $("#f").append("<input type='text' id='fname' name='fname' value='" + fname + "'><br><br>")
+    $("#f").append("<label for='lname'>Last name:</label>");
+    $("#f").append("<input type='text' id='lname' name='lname' value='" + lname + "'><br><br>")
+    $("#f").append(" <label for='num'>Phone Number:</label>");
+    $("#f").append("<input type='text' id='num' name='num' value='" + num + "'><br><br>")
+}
 function logout() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() 

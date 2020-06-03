@@ -8,7 +8,7 @@ $dbpass = 'group12!@';
 $dbname = 'acdcecon_contactZ';
 
 // for testing
-$contact = json_decode(file_get_contents('JSON/infile.json'), true);
+$contact = json_decode($_POST['contact'], true);
 
 // extract details
 $id = $contact["id"];
@@ -76,7 +76,7 @@ else
         
         else
         {
-            echo 'database updated';
+            echo 1;
         }
         
     }

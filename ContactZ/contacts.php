@@ -38,11 +38,34 @@ body {
 /* Right column (page content) */
 .right {
   flex: 65%;
-  padding: 15px;
+  padding: 0px;
   text-align:center;
   font-family: verdana;
   font-size:20px;
 }
+
+#edit {
+    list-style-type: none;
+    margin-top: 0;
+    margin-right: 0;
+    margin-left: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #e6ffe9;   
+}
+    
+#edit li:hover {
+   background-color: #eee;      
+}
+    
+#edit li {
+    float: right;
+    display: block;
+    color: black;
+    padding: 14px 16px;
+}
+
+    
     
 /* Style the search box */
 #search {
@@ -94,6 +117,8 @@ body {
 		</div>
         
 		<div class="right" style="background-color: #fce6ff;">
+            <!--<ul id ="edit"> 
+            </ul>  -->
 			<h2 id="title">Click on a name to see information</h2>
 		</div>
 	</div>
@@ -111,7 +136,7 @@ $(document).ready(function() {
             length = contacts.length;
             for (var i =0 ; i < length; i++) {
                 var out = "<li id='" + contacts[i]['id'] + "'>" + contacts[i]['firstname'] + " " + contacts[i]['lastname'] + "</li>";
-                $("ul").append(out);   
+                $("#menu").append(out);   
             }
     });
     $("#search").on('input',function() {
@@ -138,11 +163,30 @@ $(document).ready(function() {
              function(data, status) {
                 console.log(data);
                 var contacts = JSON.parse(data);
+                $(".right").prepend("<ul id= 'edit'></ul>");
+                $("#edit").append("<li id='e" + event.target.id + "'>Edit Contact</li>");
+                $("#edit").append("<li id='d" + event.target.id + "'>Delete Contact</li>");
                 $(".right").append("<h2>" + contacts['firstname'] + " " + contacts['lastname'] + "</h2>");
                 $(".right").append("<p>Phone Number: " + contacts['number']);
                 $(".right").append("<p>Email: TEMP</p>" );
             
         });
+    });
+    $(document).on('click', '#edit', function(event) {
+        var type = event.target.id.charAt(0);
+        var contact = event.target.id.substring(1);
+        console.log(contact);
+        console.log("click!");
+        if (type == "d")
+        {
+            console.log("d found");
+            $.get("API/deleteContact.php", {delete : JSON.stringify({"id" : parseInt(contact)})},
+                 function(data, status){
+                    if (data == "1")
+                        location.reload();
+                    console.log(data);
+            });
+        }
     });
 });
 function logout() {

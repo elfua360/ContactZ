@@ -11,12 +11,14 @@
 //   $add = json_decode($add, true);
 
     // For testing
-    $delete = json_decode(file_get_contents('JSON/infile.json'), true);
-
+    //$delete = json_decode(file_get_contents('JSON/infile.json'), true);
+    
     // Take contact information and store them in appropriate fields
  //   $UID = $inData["UID"];
+    $delete = $_GET["delete"];
+    $delete = json_decode($delete, true);
     $id = $delete["id"];
-
+    //echo "ID is " . $id;
    /* if (isset($_SESSION['id']))
         $uid = $_SESSION['id'];
         
@@ -37,19 +39,20 @@
     else
     {
         $sql = "SELECT * FROM contacts where id=" . $id;
+        //echo $sql;
         $result = $conn->query($sql);
         
         if ($result->num_rows > 0)
         {
             // Create an sql statement that will DELETE the contact, linking it to the user with the users ID
             $sql = "DELETE FROM contacts Where id=" . $id;
-            echo $sql . "\n";
+           // echo $sql . "\n";
             $result = $conn->query($sql);
             
             
             $sql = "SELECT * FROM contacts where id=" . $id;
-            echo $sql;
-            echo "\n";
+         //   echo $sql;
+         //   echo "\n";
             $result = $conn->query($sql);
             
             // Check if contact was ACTUALLY deleted
@@ -60,7 +63,7 @@
             
             else
             {
-                echo 'Contact deleted.';
+                echo 1;
             }
             
         }

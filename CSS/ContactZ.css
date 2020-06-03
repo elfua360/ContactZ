@@ -1,0 +1,115 @@
+@CHARSET "ISO-8859-1";
+
+button {
+	background-color: #e6ffe9;
+	border: none;
+	color: black;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+}
+
+body {
+	background-color: #d9dfff;
+}
+
+h1, h2 {
+	font-family: "Lucida Console", Courier, monospace;
+	text-align: center;
+}
+
+p {
+	font-family: "Lucida Console", Courier, monospace;
+}
+
+a{
+	font-family: "Lucida Console", Courier, monospace;
+	
+}
+
+form{
+	text-align: center;
+	font-family: "Lucida Console", Courier, monospace;
+	line-height: 120%;
+}
+
+.formholder{
+	background-color: #e6ffe9;
+	width: 25%;
+	text-align: center;
+	justify-content: center;
+	margin: auto;
+	padding: 20px;
+}
+
+.row {
+    display: flex;
+}
+
+.left {
+    flex: 35%;
+    padding: 15px 0;
+}
+
+.left h2 {
+  padding-left: 8px;
+}
+
+/* Style the search box */
+#search {
+  width: 100%;
+  font-size: 18px;
+  padding: 11px;
+  border: 1px solid #ddd;
+}
+
+/* Style the navigation menu inside the left column */
+#menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#menu li a {
+  padding: 12px;
+  text-decoration: none;
+  color: black;
+  display: block
+}
+
+#menu li a:hover {
+  background-color: #eee;
+}
+
+.sidenav{
+	width: 25%;	
+}
+
+.scrollable {
+	height: 500px;
+	width: 100%;
+	overflow-y: auto;
+}
+
+.thincolumn {
+	text-align: center;
+	width: 25%;
+	padding: 20px;
+}
+
+.widecolumn {
+	width: 75%;
+	text-align: center;
+	padding: 20px;
+}
+
+.spacer {
+	width: 50px;
+}
+
+.box {
+	display: flex;
+	justify-content: stretch;
+}

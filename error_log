@@ -1,0 +1,6 @@
+[02-Jun-2020 15:20:38 UTC] PHP Warning:  session_start(): The session id is too long or contains illegal characters, valid characters are a-z, A-Z, 0-9 and '-,' in /home/acdcecon/public_html/index.php on line 2
+[02-Jun-2020 15:20:38 UTC] PHP Warning:  session_start(): Failed to read session data: files (path: /var/cpanel/php/sessions/ea-php72) in /home/acdcecon/public_html/index.php on line 2
+[02-Jun-2020 15:21:08 UTC] PHP Warning:  session_start(): The session id is too long or contains illegal characters, valid characters are a-z, A-Z, 0-9 and '-,' in /home/acdcecon/public_html/index.php on line 2
+[02-Jun-2020 15:21:08 UTC] PHP Warning:  session_start(): Failed to read session data: files (path: /var/cpanel/php/sessions/ea-php72) in /home/acdcecon/public_html/index.php on line 2
+[02-Jun-2020 15:21:44 UTC] PHP Warning:  session_start(): The session id is too long or contains illegal characters, valid characters are a-z, A-Z, 0-9 and '-,' in /home/acdcecon/public_html/index.php on line 2
+[02-Jun-2020 15:21:44 UTC] PHP Warning:  session_start(): Failed to read session data: files (path: /var/cpanel/php/sessions/ea-php72) in /home/acdcecon/public_html/index.php on line 2

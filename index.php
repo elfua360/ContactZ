@@ -21,8 +21,6 @@ else
 <h1>Welcome to ContactZ</h1>
 <p align="right">
 </head>
-
-
 <body>
 
 
@@ -44,11 +42,11 @@ else
 				<label for="password">Password:</label><br> <input type="password" id="password" name="password">
 			
 			<br><br>
-			<button type="button">Log In</button>
+			<button class = "button" type="button" id = "log" style="vertical-align:middle"><span>Log In</span></button>
 			<p id ="response" style="color:red"> </p>
 			<!--<p>Form Handler also needed at /register.php and /addcontact.php </p>-->
 			</form>
-			<button onclick="window.location='https://'contactz.xyz/signup.php;"> Create An Account</button>
+            <button class="button" style="vertical-align:middle" onclick="window.location='signup.php';"><span>Sign Up</span></button>
 			
 
 		</div>
@@ -79,7 +77,7 @@ else
     xhttp.send();
 }*/
 $(document).ready(function() {
-   $("button").click(function() {
+   $("#log").click(function() {
        var payload = {username : $('#username').val(), password : $('#password').val()};
        payload = JSON.stringify(payload);
        console.log(payload);

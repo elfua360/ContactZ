@@ -1,23 +1,63 @@
 @CHARSET "ISO-8859-1";
 
+
 button {
-	background-color: #e6ffe9;
-	border: none;
-	color: black;
-	padding: 15px 32px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 16px;
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #a38d9a;
+    border: none;
+    color: black;
+    text-align: center;
+    font-size: 19px;
+    padding: 15px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;       
 }
 
-body {
-	background-color: #d9dfff;
+button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
 }
+
+button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+button:hover span {
+  padding-right: 25px;
+}
+
+button:hover span:after {
+  opacity: 1;
+  right: 0;
+}    
 
 h1, h2 {
 	font-family: "Lucida Console", Courier, monospace;
 	text-align: center;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #7d8aa8;
+    background-image: linear-gradient(to bottom right, #7d8aa8, white);
 }
 
 p {
@@ -36,7 +76,9 @@ form{
 }
 
 .formholder{
-	background-color: #e6ffe9;
+	border: 1px solid #000000;
+	font-family: "Lucida Console", Courier, monospace;
+	background-color: #ad9393;
 	width: 25%;
 	text-align: center;
 	justify-content: center;
@@ -45,34 +87,42 @@ form{
 }
 
 .row {
+	font-family: "Lucida Console", Courier, monospace;
     display: flex;
 }
 
 .left {
+	border: 1px solid #000000;
+	font-family: "Lucida Console", Courier, monospace; 
     flex: 35%;
     padding: 15px 0;
 }
 
 .left h2 {
+	font-family: "Lucida Console", Courier, monospace;
   padding-left: 8px;
 }
 
 /* Style the search box */
 #search {
+	font-family: "Lucida Console", Courier, monospace;
   width: 100%;
   font-size: 18px;
   padding: 11px;
-  border: 1px solid #ddd;
+  border: 1px solid #000000;
 }
 
 /* Style the navigation menu inside the left column */
 #menu {
+	border: 1px solid #000000;
+	font-family: "Lucida Console", Courier, monospace;
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
 #menu li a {
+	font-family: "Lucida Console", Courier, monospace;
   padding: 12px;
   text-decoration: none;
   color: black;
@@ -80,36 +130,48 @@ form{
 }
 
 #menu li a:hover {
+	font-family: "Lucida Console", Courier, monospace;
   background-color: #eee;
 }
 
 .sidenav{
+	border: 1px solid #000000;
+	font-family: "Lucida Console", Courier, monospace;
 	width: 25%;	
 }
 
 .scrollable {
+	border: 1px solid #000000;
+	font-family: "Lucida Console", Courier, monospace;
 	height: 500px;
 	width: 100%;
 	overflow-y: auto;
 }
 
 .thincolumn {
+	border: 1px solid #000000;
+	font-family: "Lucida Console", Courier, monospace;
 	text-align: center;
 	width: 25%;
 	padding: 20px;
 }
 
 .widecolumn {
+	border: 1px solid #000000;
+	font-family: "Lucida Console", Courier, monospace;
 	width: 75%;
 	text-align: center;
 	padding: 20px;
 }
 
 .spacer {
+	font-family: "Lucida Console", Courier, monospace;
 	width: 50px;
 }
 
 .box {
+	border: 1px solid #000000;
+	font-family: "Lucida Console", Courier, monospace;
 	display: flex;
 	justify-content: stretch;
 }

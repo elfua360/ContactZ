@@ -41,17 +41,18 @@ body {
   padding: 0px;
   text-align:center;
   font-family: verdana;
-  font-size:20px;
+  font-size: 20px;
 }
 
 #edit {
     list-style-type: none;
-    margin-top: 1px;
-    margin-right: 1px;
-    margin-left: 1px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-left: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #e6ffe9;   
+    background-color: #a5b3c9;
+    border-style: solid;
 }
     
 #edit li:hover {
@@ -72,7 +73,8 @@ body {
     margin-left: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #e6ffe9;   
+    background-color: #a5b3c9;  
+    border-style: solid;
 }
     
 #done li:hover {
@@ -101,6 +103,7 @@ body {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  border-style: none;
 }
 
 #menu li {

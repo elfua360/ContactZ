@@ -16,6 +16,11 @@ else
 <head>
 <script src="jquery-3.5.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="CSS/ContactZ.css">
+<style>
+.formholder {
+    border-radius: 25px;
+}
+</style>
 <meta charset="ISO-8859-1">
 <title>Add a new contact</title>
 <h1>Add a New Contact</h1>

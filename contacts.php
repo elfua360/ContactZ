@@ -204,12 +204,15 @@ $(document).ready(function() {
         if (type == "d" && $.isNumeric(contact))
         {
             console.log("d found");
-            $.get("API/deleteContact.php", {delete : JSON.stringify({"id" : parseInt(contact)})},
-                 function(data, status){
-                    if (data == "1")
-                        location.reload();
-                    console.log(data);
-            });
+            if (confirm("Are you sure you want to delete this contact?"))
+            {
+                $.get("API/deleteContact.php", {delete : JSON.stringify({"id" : parseInt(contact)})},
+                    function(data, status){
+                        if (data == "1")
+                            location.reload();
+                        console.log(data);
+                });       
+            }   
         }
         
         else if (type == "e" && $.isNumeric(contact))

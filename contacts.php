@@ -201,7 +201,7 @@ $(document).ready(function() {
         var contact = event.target.id.substring(1);
         console.log(contact);
         console.log("click!");
-        if (type == "d")
+        if (type == "d" && $.isNumeric(contact))
         {
             console.log("d found");
             $.get("API/deleteContact.php", {delete : JSON.stringify({"id" : parseInt(contact)})},
@@ -212,7 +212,7 @@ $(document).ready(function() {
             });
         }
         
-        else if (type == "e")
+        else if (type == "e" && $.isNumeric(contact))
         {
            $.get("API/retrieveContact.php", {contact : JSON.stringify({"id" : contact})},
                  function(data, status) {
@@ -225,12 +225,15 @@ $(document).ready(function() {
 
 $(document).on('click', '#done', function(event) {
     var id = event.target.id.substring(1);
-    var payload = {contact : JSON.stringify({"id" : parseInt(id), "firstname" : $("#fname").val(), "lastname" : $("#lname").val(), "number" : $("#num").val(), "email" : $("#email").val()})};
-    $.post("API/updateContact.php", payload, function(result) {
+    if($.isNumeric(id)) 
+    {
+       var payload = {contact : JSON.stringify({"id" : parseInt(id), "firstname" : $("#fname").val(), "lastname" : $("#lname").val(), "number" : $("#num").val(), "email" : $("#email").val()})};
+        $.post("API/updateContact.php", payload, function(result) {
         console.log(result);
         location.reload();
     
-    });
+        });      
+    }  
 });
 function editContact(id,fname,lname,num, email) {
     $(".right").empty();
